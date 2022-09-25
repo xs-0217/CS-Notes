@@ -791,6 +791,13 @@ static final int tableSizeFor(int cap) {
 
 从 JDK 1.8 开始，一个桶存储的链表长度大于等于 8 时会将链表转换为红黑树。
 
+准确的说是长度的大于等于8会调用treeifbin()方法，在这个方法中，会检查，如果table的长度小于64不会树化，而是进行扩容。
+
+如果table的长度大于64等于64才会树化变成红黑树。
+
+![image](https://user-images.githubusercontent.com/82742675/192125034-cab42210-9ff1-4883-9eb9-49a1e45d56ec.png)
+
+
 #### 9. 与 Hashtable 的比较
 
 - Hashtable 使用 synchronized 来进行同步。
